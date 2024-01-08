@@ -2,9 +2,9 @@ import styled, { ThemeProvider } from "styled-components";
 import { lightTheme } from "./utils/Themes";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Payments from "./pages/Payments";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import Payments from "./pages/Payments";
 
 const Container = styled.div`
   width: 100%;
@@ -36,7 +36,7 @@ function App() {
           <Wrapper>
             <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
             <Routes>
-              <Route path="/" element={<Payments />} />
+              <Route path="/payments" element={<Payments />} />
             </Routes>
           </Wrapper>
         </Container>

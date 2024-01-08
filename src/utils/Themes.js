@@ -1,8 +1,6 @@
 export const lightTheme = {
   bg: "#FAFAFA",
-  bgLight: "#FFFFFF",
-  primary: "#007AFF",
-  secondary: "#9747FF",
+  primary: "#146EB4",
   button:
     "linear-gradient(225deg, rgb(132, 0, 255) 0%, rgb(230, 0, 255) 100%);",
   gradient_primary:
@@ -19,10 +17,13 @@ export const lightTheme = {
   text_secondary: "#4D4D4D",
   searchBar: "#F2F2F2",
   searchBar_text: "#808080",
+  tableSearchBar_text: "#999",
+  card: "#FFFFFF",
+  tableHeading_bg: "#F2F2F2",
+  tableDivider: "#e6e6e6",
 
   arrow: "#AFAFB5",
   table_header: "#242445",
-  card: "#FFFFFF",
   black: "#000000",
   white: "#FFFFFF",
   shadow: "#00000020",
