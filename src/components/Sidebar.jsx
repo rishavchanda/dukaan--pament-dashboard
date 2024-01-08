@@ -15,6 +15,8 @@ import DisountIcon from "../utils/Icons/DisountIcon.svg";
 import AudienceIcon from "../utils/Icons/AudienceIcon.svg";
 import Appearenceicon from "../utils/Icons/Appearenceicon.svg";
 import PluginsIcon from "../utils/Icons/PluginsIcon.svg";
+import { UserData } from "../utils/Data";
+import { CloseRounded } from "@mui/icons-material";
 
 const Container = styled.div`
   flex: 1;
@@ -27,6 +29,7 @@ const Container = styled.div`
   color: ${({ theme }) => theme.menu_secondary_text};
   @media (max-width: 1100px) {
     position: fixed;
+    height: 96vh;
     z-index: 1000;
     width: 100%;
     max-width: 224px;
@@ -43,6 +46,12 @@ const FlexTopDown = styled.div`
   justify-content: space-between;
 `;
 
+const Close = styled.div`
+  display: none;
+  @media (max-width: 1100px) {
+    display: block;
+  }
+`;
 const Flex = styled.div`
   width: 100%;
   display: flex;
@@ -221,14 +230,19 @@ const Sidebar = ({ setMenuOpen }) => {
                 backgroundColor: theme.menu_secondary_text,
                 borderRadius: "4px",
               }}
-            >
-              A
-            </Avatar>
+              src={UserData.img}
+            />
             <ProfileDetails>
-              Nishyan
+              {UserData.name}
               <TextButton>Visit store</TextButton>
             </ProfileDetails>
             <NavLinkItemIcon src={DownIcon} />
+            <Close>
+              <CloseRounded
+                onClick={() => setMenuOpen(false)}
+                style={{ cursor: "pointer", fontSize: "20px" }}
+              />
+            </Close>
           </User>
           <ContainerWrapper>
             {SidebarItems.map((item, index) => (

@@ -5,6 +5,8 @@ import SortIcon from "../utils/Icons/Sort.svg";
 import DownloadIcon from "../utils/Icons/Download.svg";
 import InfoIcon from "../utils/Icons/Info.svg";
 import Dropdown from "../utils/Icons/Triangle-Icon.svg";
+import Paginator from "../components/Paginator";
+import { TableData } from "../utils/Data";
 
 const Container = styled.div`
   height: 100%;
@@ -14,6 +16,7 @@ const Container = styled.div`
   gap: 32px;
   background: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
+  overflow-y: scroll;
 `;
 
 const Section = styled.div`
@@ -34,6 +37,33 @@ const SectionTitle = styled.div`
   font-weight: 500;
   line-height: 28px;
   color: ${({ theme }) => theme.text_primary};
+`;
+
+const OutlineWrapper = styled.div`
+  padding: 10px 14px;
+  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.navbar_border};
+  background: transparent;
+  outline: none;
+`;
+
+const Select = styled.select`
+  background: transparent;
+  padding-right: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: ${({ theme }) => theme.text_secondary};
+`;
+
+const Option = styled.option`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: ${({ theme }) => theme.text_secondary};
 `;
 
 const Card = styled.div`
@@ -173,21 +203,6 @@ const TableColumnItem = styled.div`
   color: ${({ theme }) => theme.text_primary};
 `;
 
-const TableData = [
-  {
-    id: 281209,
-    order_date: "7 July, 2023",
-    order_amount: "₹ 1,278.23",
-    transaction_fees: "₹ 22",
-  },
-  {
-    id: 281209,
-    order_date: "7 July, 2023",
-    order_amount: "₹ 1,278.23",
-    transaction_fees: "₹ 22",
-  },
-];
-
 const Payments = () => {
   const theme = useTheme();
   return (
@@ -196,6 +211,12 @@ const Payments = () => {
       <Section>
         <FlexBetween>
           <SectionTitle>Overview</SectionTitle>
+          <OutlineWrapper>
+            <Select value="last month">
+              <Option value="this month">This Month</Option>
+              <Option value="last month">Last Month</Option>
+            </Select>
+          </OutlineWrapper>
         </FlexBetween>
         <FlexBetween stle={{ gap: "20px" }}>
           <Card>
@@ -268,6 +289,7 @@ const Payments = () => {
               </TableColumn>
             ))}
           </TableItems>
+          <Paginator />
         </Table>
       </Section>
     </Container>

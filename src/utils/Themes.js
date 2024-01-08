@@ -1,11 +1,6 @@
 export const lightTheme = {
   bg: "#FAFAFA",
   primary: "#146EB4",
-  button:
-    "linear-gradient(225deg, rgb(132, 0, 255) 0%, rgb(230, 0, 255) 100%);",
-  gradient_primary:
-    "-webkit-linear-gradient(225deg, rgb(132, 0, 255) 0%, rgb(230, 0, 255) 100%);",
-  disabled: "#b1b2b3",
   menubar: "#1E2640",
   menu_hover: "#ffffff1a",
   menu_primary_text: "#FFF",
@@ -21,16 +16,4 @@ export const lightTheme = {
   card: "#FFFFFF",
   tableHeading_bg: "#F2F2F2",
   tableDivider: "#e6e6e6",
-
-  arrow: "#AFAFB5",
-  table_header: "#242445",
-  black: "#000000",
-  white: "#FFFFFF",
-  shadow: "#00000020",
-  green: "#00ff6a",
-  yellow: "#e8ba00",
-  red: "#ef5350",
-  work: "#0d72ff",
-  meeting: "#ff9500",
-  break: "#ff0dae",
 };

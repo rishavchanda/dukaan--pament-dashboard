@@ -1,6 +1,6 @@
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme } from "./utils/Themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
@@ -28,6 +28,21 @@ const Wrapper = styled.div`
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(true);
+
+  //set the menuOpen state to false if the screen size is less than 768px
+  useEffect(() => {
+    const resize = () => {
+      if (window.innerWidth < 1110) {
+        setMenuOpen(false);
+      } else {
+        setMenuOpen(true);
+      }
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
   return (
     <ThemeProvider theme={lightTheme}>
       <BrowserRouter>

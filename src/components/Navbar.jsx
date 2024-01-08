@@ -4,6 +4,8 @@ import SearchIcon from "../utils/Icons/search.svg";
 import HelpIcon from "../utils/Icons/Help.svg";
 import NotificationIcon from "../utils/Icons/NotifyIcon.svg";
 import DropdownIcon from "../utils/Icons/MenuDropdown.svg";
+import { MenuRounded } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 const Container = styled.div`
   background: ${({ theme }) => theme.navbar};
@@ -14,6 +16,9 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 12px 32px;
   gap: 16px;
+  @media (max-width: 1100px) {
+    padding: 12px 12px;
+  }
 `;
 
 const Flex = styled.div`
@@ -21,6 +26,14 @@ const Flex = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+`;
+
+const MenuIcon = styled(IconButton)`
+  color: ${({ theme }) => theme.text_primary} !important;
+  display: none !important;
+  @media (max-width: 1100px) {
+    display: flex !important;
+  }
 `;
 
 const Path = styled.div`
@@ -77,7 +90,7 @@ const MenuItems = styled.div`
   gap: 12px;
 `;
 
-const IconButton = styled.img`
+const Button = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -107,6 +120,9 @@ const Navbar = ({ setMenuOpen, menuOpen }) => {
   return (
     <Container>
       <Flex>
+        <MenuIcon onClick={() => setMenuOpen(!menuOpen)}>
+          <MenuRounded sx={{ fontSize: "16px" }} />
+        </MenuIcon>
         <Path>{path}</Path>
         <Info>
           <Icon style={{ width: "14px", height: "14px" }} src={HelpIcon} />
@@ -118,8 +134,8 @@ const Navbar = ({ setMenuOpen, menuOpen }) => {
         <Input placeholder="Search features, tutorials, etc." />
       </Search>
       <MenuItems>
-        <IconButton src={NotificationIcon} />
-        <IconButton src={DropdownIcon} />
+        <Button src={NotificationIcon} />
+        <Button src={DropdownIcon} />
       </MenuItems>
     </Container>
   );
