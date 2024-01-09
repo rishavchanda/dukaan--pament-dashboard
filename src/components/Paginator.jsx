@@ -31,17 +31,23 @@ const Icon = styled.img`
   height: 18px;
 `;
 
+const Span = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const BackButton = () => {
   return (
     <OutlinedButton>
-      <Icon src={Back} alt="back" /> Previous
+      <Icon src={Back} alt="back" /> <Span>Previous</Span>
     </OutlinedButton>
   );
 };
 const NextButton = () => {
   return (
     <OutlinedButton>
-      Next
+      <Span>Next</Span>
       <Icon src={Next} alt="next" />
     </OutlinedButton>
   );

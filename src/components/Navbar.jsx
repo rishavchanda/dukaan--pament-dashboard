@@ -52,6 +52,9 @@ const Info = styled.div`
   line-height: 16px;
   color: ${({ theme }) => theme.text_secondary};
   cursor: pointer;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Search = styled.div`
@@ -64,6 +67,9 @@ const Search = styled.div`
   gap: 8px;
   color: ${({ theme }) => theme.text_primary};
   background-color: ${({ theme }) => theme.searchBar};
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Icon = styled.img`

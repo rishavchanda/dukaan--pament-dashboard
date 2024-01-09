@@ -17,6 +17,9 @@ const Container = styled.div`
   background: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
   overflow-y: scroll;
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
 `;
 
 const Section = styled.div`
@@ -31,7 +34,14 @@ const FlexBetween = styled.div`
   justify-content: space-between;
   gap: 16px;
 `;
-
+const Cards = styled.div`
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 const SectionTitle = styled.div`
   font-size: 20px;
   font-weight: 500;
@@ -57,6 +67,10 @@ const Select = styled.select`
   font-weight: 400;
   line-height: 24px;
   color: ${({ theme }) => theme.text_secondary};
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Option = styled.option`
@@ -99,6 +113,9 @@ const Table = styled.div`
   background: ${({ theme }) => theme.card};
   border-radius: 8px;
   box-shadow: 0px 2px 6px 0px rgba(26, 24, 30, 0.04);
+  @media (max-width: 768px) {
+    padding: 6px 6px 12px 6px;
+  }
 `;
 
 const TableTop = styled.div`
@@ -138,6 +155,9 @@ const Buttons = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 const OutlinedButton = styled.button`
@@ -160,6 +180,9 @@ const TableItems = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  @media (max-width: 768px) {
+    gap: 6px;
+  }
 `;
 
 const TableHeading = styled.div`
@@ -181,6 +204,9 @@ const TableHeadingItem = styled.div`
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const TableColumn = styled.div`
@@ -191,6 +217,9 @@ const TableColumn = styled.div`
   gap: 40px;
   border-bottom: 1px solid ${({ theme }) => theme.tableDivider};
   cursor: pointer;
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
 `;
 
 const TableColumnItem = styled.div`
@@ -201,6 +230,9 @@ const TableColumnItem = styled.div`
   font-weight: 400;
   line-height: 20px;
   color: ${({ theme }) => theme.text_primary};
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const Payments = () => {
@@ -218,7 +250,7 @@ const Payments = () => {
             </Select>
           </OutlineWrapper>
         </FlexBetween>
-        <FlexBetween stle={{ gap: "20px" }}>
+        <Cards>
           <Card>
             <CardTitle>Online orders</CardTitle>
             <CardValue>231</CardValue>
@@ -227,7 +259,7 @@ const Payments = () => {
             <CardTitle>Amount received</CardTitle>
             <CardValue>₹23,92,312.19</CardValue>
           </Card>
-        </FlexBetween>
+        </Cards>
       </Section>
       {/* Transactions Section */}
       <Section
