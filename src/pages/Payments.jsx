@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { useTheme } from "styled-components";
 import SearchIcon from "../utils/Icons/search.svg";
 import SortIcon from "../utils/Icons/Sort.svg";
@@ -237,6 +237,28 @@ const TableColumnItem = styled.div`
 
 const Payments = () => {
   const theme = useTheme();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  //table search
+  const filteredData = TableData.filter(
+    (item) =>
+      item.id.toString().includes(searchTerm) ||
+      item.order_date.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.order_amount.includes(searchTerm) ||
+      item.transaction_fees.includes(searchTerm)
+  );
+
+  //pagination
+  const itemsPerPage = 10;
+  const handleChangePage = (event, value) => {
+    setCurrentPage(value);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = filteredData.slice(startIndex, endIndex);
+
   return (
     <Container>
       {/* Overview Section */}
@@ -272,7 +294,11 @@ const Payments = () => {
           <TableTop>
             <SearchBar>
               <Icon src={SearchIcon} />
-              <Input placeholder="Search by order ID..." />
+              <Input
+                placeholder="Search by order ID..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </SearchBar>
             <Buttons>
               <OutlinedButton>
@@ -304,7 +330,7 @@ const Payments = () => {
                 Transaction fees <Icon src={InfoIcon} />
               </TableHeadingItem>
             </TableHeading>
-            {TableData.map((item) => (
+            {currentData.map((item) => (
               <TableColumn key={item.id}>
                 <TableColumnItem
                   style={{ color: theme.primary, fontWeight: "500" }}
@@ -321,7 +347,12 @@ const Payments = () => {
               </TableColumn>
             ))}
           </TableItems>
-          <Paginator />
+          <Paginator
+            size={filteredData.length}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            handleChangePage={handleChangePage}
+          />
         </Table>
       </Section>
     </Container>

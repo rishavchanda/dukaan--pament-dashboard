@@ -247,6 +247,7 @@ const Sidebar = ({ setMenuOpen }) => {
           <ContainerWrapper>
             {SidebarItems.map((item, index) => (
               <NavLinkItem
+                key={index}
                 to={item.link}
                 exact
                 style={{ textDecoration: "none" }}

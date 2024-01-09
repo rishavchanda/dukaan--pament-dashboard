@@ -51,7 +51,7 @@ function App() {
           <Wrapper>
             <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
             <Routes>
-              <Route path="/payments" element={<Payments />} />
+              <Route path="/payments" element={<Payments />} exact />
             </Routes>
           </Wrapper>
         </Container>

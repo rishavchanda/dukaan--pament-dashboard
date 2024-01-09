@@ -53,14 +53,15 @@ const NextButton = () => {
   );
 };
 
-const Paginator = () => {
+const Paginator = ({ size, itemsPerPage, currentPage, handleChangePage }) => {
   return (
     <Container>
       <Pagination
         shape="rounded"
         color="primary"
-        count={18}
-        defaultPage={10}
+        count={Math.ceil(size / itemsPerPage)}
+        page={currentPage}
+        onChange={handleChangePage}
         renderItem={(item) => (
           <PaginationItem
             slots={{
